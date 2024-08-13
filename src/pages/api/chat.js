@@ -3,8 +3,8 @@ import axios from 'axios';
 
 export default async function handler(req, res) {
   const referer = req.headers.referer || req.headers.referrer; // get the referer from the request headers
-  print("referer");
-  print(referer);
+  console.log("referer");
+  console.log(referer);
   if (req.method !== 'POST') {
     res.status(405).json({ message: 'Method should be POST' });
   } else if (process.env.NODE_ENV !== "development") {
@@ -15,8 +15,8 @@ export default async function handler(req, res) {
   else {
     try {
       const { body } = req;
-      print("req");
-      print(req);
+      console.log("req");
+      console.log(req);
       api_url = process.env.LLM_URL;
       const url = 'https://api.openai.com/v1/chat/completions';
       const headers = {
