@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   const referer = req.headers.referer || req.headers.referrer; // get the referer from the request headers
   console.log("referer");
   console.log(referer);
-  console.log(req.method);
+  console.log(req);
   if (req.method !== 'POST') {
     console.log('Method should be POST');
     res.status(405).json({ message: 'Method should be POST' });
