@@ -5,10 +5,14 @@ export default async function handler(req, res) {
   const referer = req.headers.referer || req.headers.referrer; // get the referer from the request headers
   console.log("referer");
   console.log(referer);
+  console.log(req.method);
   if (req.method !== 'POST') {
+    console.log('Method should be POST');
     res.status(405).json({ message: 'Method should be POST' });
   } else if (process.env.NODE_ENV !== "development") {
     if (!referer || referer !== process.env.APP_URL) {
+      console.log(process.env.APP_URL);
+      console.log('Unauthorized');
       res.status(401).json({ message: 'Unauthorized' });
     }
   }
