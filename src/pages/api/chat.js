@@ -13,8 +13,8 @@ export default async function handler(req, res) {
     console.log(referer);
     console.log(process.env.APP_URL);
     if (!referer || referer !== process.env.APP_URL) {
-      console.log('Unauthorized');
-      res.status(401).json({ message: 'Unauthorized' });
+      //console.log('Unauthorized');
+      //res.status(401).json({ message: 'Unauthorized' });
     }
   }
   else {
