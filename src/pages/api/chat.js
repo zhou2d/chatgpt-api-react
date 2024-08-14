@@ -13,18 +13,18 @@ export default async function handler(req, res) {
     console.log(referer);
     console.log(process.env.APP_URL);
     if (!referer || referer !== process.env.APP_URL) {
-      //console.log('Unauthorized');
-      //res.status(401).json({ message: 'Unauthorized' });
+      console.log('Unauthorized');
+      res.status(401).json({ message: 'Unauthorized' });
     }
   }
   else {
-    try {
-      const { body } = req;
-      console.log("req");
+    try 
+      console.log("2.req");
       console.log(req);
+      const { body } = req;
       api_url = process.env.LLM_URL;
       console.log(api_url);
-      const url = 'https://api.openai.com/v1/chat/completions';
+      //const url = 'https://api.openai.com/v1/chat/completions';
       const headers = {
         'Content-type': 'application/json',
         'Authorization': `Bearer ${process.env.LLM_API_KEY}`
