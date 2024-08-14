@@ -10,8 +10,9 @@ export default async function handler(req, res) {
     console.log('Method should be POST');
     res.status(405).json({ message: 'Method should be POST' });
   } else if (process.env.NODE_ENV !== "development") {
+    console.log(referer);
+    console.log(process.env.APP_URL);
     if (!referer || referer !== process.env.APP_URL) {
-      console.log(process.env.APP_URL);
       console.log('Unauthorized');
       res.status(401).json({ message: 'Unauthorized' });
     }
@@ -22,13 +23,14 @@ export default async function handler(req, res) {
       console.log("req");
       console.log(req);
       api_url = process.env.LLM_URL;
+      console.log(api_url);
       const url = 'https://api.openai.com/v1/chat/completions';
       const headers = {
         'Content-type': 'application/json',
         'Authorization': `Bearer ${process.env.LLM_API_KEY}`
       };
 
-      const response = await axios.post(url, body, { headers: headers })
+      const response = await axios.post(api_url, body, { headers: headers })
 
       res.status(200).json(response.data);
     } catch (error) {
