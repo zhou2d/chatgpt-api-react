@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     }
   }
   else {
-    try 
+    try {
       console.log("2.req");
       console.log(req);
       const { body } = req;
